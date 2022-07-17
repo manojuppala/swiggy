@@ -1,1 +1,2 @@
-# swiggy-2
+# swiggy
+a food ordering website using react.
