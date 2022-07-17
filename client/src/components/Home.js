@@ -13,7 +13,7 @@ function Home() {
   const getItems = async () => {
     try {
       //proxy
-      const response = await fetch("/items");
+      const response = await fetch("items");
       const jsonData = await response.json();
       setItems(jsonData);
     } catch (err) {
