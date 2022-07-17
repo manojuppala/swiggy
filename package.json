@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ndoe index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "author": "manoj uppala",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "pg": "^8.7.3"
   }

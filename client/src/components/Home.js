@@ -12,7 +12,8 @@ function Home() {
   const [items, setItems] = useState([]);
   const getItems = async () => {
     try {
-      const response = await fetch("http://localhost:5000/items");
+      //proxy
+      const response = await fetch("/items");
       const jsonData = await response.json();
       setItems(jsonData);
     } catch (err) {
