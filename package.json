@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "ndoe index.js",
-    "heroku-postbuild": "cd client && npm install --force && npm run build"
+    "heroku-postbuild": "cd app && npm install --force && npm run build"
   },
   "author": "manoj uppala",
   "license": "ISC",
