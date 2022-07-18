@@ -45,6 +45,7 @@ function CommonCard({
   item_cost,
   item_count,
   item_time,
+  handleOnClick,
 }) {
   const classes = useStyles();
 
@@ -74,11 +75,11 @@ function CommonCard({
           {showRating(item_rating ?? 0)}
           {bull}
           {item_time} MINS
-          {bull}₹{item_cost} FOR TWO
+          {bull}₹{item_cost} FOR ONE
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">
+        <Button size="small" onClick={handleOnClick}>
           <ShoppingCartIcon fontSize="small" />
           Add to cart
         </Button>
