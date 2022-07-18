@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Card from "./Card";
 import { Grid } from "@mui/material";
 import Navbar from "./Navbar";
 import Order from "./Order";
@@ -11,10 +10,11 @@ const useStyles = makeStyles({
 
 function OrderHistory() {
   const [orders, setOrders] = useState([]);
+  const customer_id = 1;
   const getOrder = async () => {
     try {
       //proxy
-      const response = await fetch("/orderhistory/1");
+      const response = await fetch(`/orderhistory/${customer_id}`);
       const jsonData = await response.json();
       setOrders(jsonData);
     } catch (err) {
@@ -30,7 +30,6 @@ function OrderHistory() {
 
   return (
     <>
-      <Navbar />
       <div className={classes.cardDeck}>
         <Grid container spacing={4}>
           {orders.map((cardProps) => (

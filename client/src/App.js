@@ -1,18 +1,21 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import "./App.css";
+import { Route, Routes } from "react-router-dom";
 
 //components
 import Home from "./components/Home";
-import Login from "./components/Login";
-import Card from "./components/Card";
-import Navbar from "./components/Navbar";
 import OrderHistory from "./components/OrderHistory";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <Fragment>
+      <Navbar />
       <div className="container">
-        <OrderHistory />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/orders" element={<OrderHistory />} />
+        </Routes>
       </div>
     </Fragment>
   );

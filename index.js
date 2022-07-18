@@ -75,7 +75,7 @@ app.get("/orderhistory/:id", async (req, res) => {
     const orderHistory = await pool.query("SELECT * FROM orders WHERE customer_id = $1", [
       customer_id,
     ]);
-    console.log(orderHistory.rows);
+
     res.json(orderHistory.rows);
   } catch (err) {
     console.error(err.message);

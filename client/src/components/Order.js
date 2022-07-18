@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
+const moment = require("moment");
 
-export default function Order({ item_id }) {
+export default function Order({ order_id, order_date, order_quantity, item_id }) {
   const [item, setitem] = useState({});
   const getItem = async () => {
     try {
@@ -17,7 +18,7 @@ export default function Order({ item_id }) {
   useEffect(() => {
     getItem();
   });
-
+  moment(order_date).format("MMMM d, YYYY");
   return (
     <Box
       sx={{
@@ -41,7 +42,7 @@ export default function Order({ item_id }) {
           maxWidth: { xs: 350, md: 250 },
         }}
         alt="Food Item"
-        src={item.item_image}
+        src={item.item_img}
       />
       <Box
         sx={{
@@ -52,10 +53,16 @@ export default function Order({ item_id }) {
           minWidth: { md: 350 },
         }}
       >
-        <Box component="span" sx={{ fontSize: 16, mt: 1 }}>
+        <Box component="span" sx={{ fontSize: 24, mt: 1 }}>
           {item.item_name}
         </Box>
-        <Box component="span" sx={{ color: "primary.main", fontSize: 22 }}>
+        <Box component="span" sx={{ fontSize: 12 }}>
+          {moment(order_date).format("MMMM d, YYYY")}
+        </Box>
+        <Box component="span" sx={{ fontSize: 16, mt: 1 }}>
+          Quantity: {order_quantity}
+        </Box>
+        <Box component="span" sx={{ color: "primary.main", fontSize: 16 }}>
           Cost - ₹{item.item_cost}
         </Box>
       </Box>

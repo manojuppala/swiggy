@@ -29,7 +29,6 @@ function Home() {
 
   return (
     <>
-      <Navbar />
       <div className={classes.cardDeck}>
         <Grid container spacing={4}>
           {items.map((cardProps) => (
