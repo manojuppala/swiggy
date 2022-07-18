@@ -6,15 +6,7 @@ customer_name VARCHAR(255),
 customer_city VARCHAR(255)
 );
 
-CREATE TABLE orders(
-    order_id SERIAL PRIMARY KEY,
-    order_date DATE NOT NULL DEFAULT CURRENT_DATE,
-    customer_id INT,
-    CONSTRAINT fk_ord_cus FOREIGN KEY(customer_id) REFERENCES customer(customer_id),
-    order_status VARCHAR(255)
-);
-
-CREATE TABLE items(
+CREATE TABLE item(
     item_id SERIAL PRIMARY KEY,
     item_name VARCHAR(255),
     item_img VARCHAR(255),
@@ -23,4 +15,15 @@ CREATE TABLE items(
     item_count NUMERIC,
     item_rating NUMERIC,
     item_cost NUMERIC
+);
+
+CREATE TABLE orders(
+    order_id SERIAL PRIMARY KEY,
+    order_date DATE NOT NULL DEFAULT CURRENT_DATE,
+    customer_id INT,
+    CONSTRAINT fk_ord_cus FOREIGN KEY(customer_id) REFERENCES customer(customer_id),
+    order_status VARCHAR(255),
+    order_quantity NUMERIC,
+    item_id INT,
+    CONSTRAINT fk_ord_itm FOREIGN KEY(item_id) REFERENCES item(item_id)
 );
