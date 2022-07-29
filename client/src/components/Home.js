@@ -11,6 +11,7 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { makeStyles } from "@mui/styles";
+import axios from "axios";
 
 const useStyles = makeStyles({
   cardDeck: { margin: "2rem 0rem 2rem 5rem !important" },
@@ -71,20 +72,10 @@ function Home() {
         order_quantity: textInput,
       };
       console.log(JSON.stringify(itemOrder));
-
-      //proxy
-      const response = await fetch("/order", {
-        method: "POST",
-        mode: "cors",
-        header: { "Content-Type": "application/json, charset=UTF-8" },
-        body: JSON.stringify({
-          customer_id: 1,
-          order_status: "Delivered",
-          order_quantity: textInput,
-          item_id: selectItem.item_id,
-        }),
+      axios.post(`/order`, itemOrder).then((res) => {
+        console.log(res);
+        console.log(res.data);
       });
-      console.log(response);
     } catch (e) {
       console.error(e);
     }
@@ -144,7 +135,13 @@ function Home() {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={placeOrder}>Place Order</Button>
+          <Button
+            onClick={() => {
+              placeOrder();
+            }}
+          >
+            Place Order
+          </Button>
         </DialogActions>
       </Dialog>
     </>
